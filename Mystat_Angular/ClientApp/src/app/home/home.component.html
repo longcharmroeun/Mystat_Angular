@@ -1,0 +1,112 @@
+<div class="row">
+        <div class="container h-100">
+            <div class="row justify-content-start align-items-center h-100">
+                <div class="col-12 col-sm-11 col-md-8 col-lg-5">
+                    <div class="profile-card py-3 card">
+                      <div *ngIf="!userinfo" class="d-flex justify-content-center">
+                          <div class="spinner-grow text-primary" role="status">
+                              <span class="sr-only">Loading...</span>
+                          </div>
+                      </div>
+                        <div *ngIf="userinfo" class="card-body px-4 px-md-3 py-3">
+                            <div class="row">
+                                <div class="col-12 col-md-5 pr-lg-3 justify-content-center">
+                                    <div class="px-4 mb-4">
+                                        <div *ngIf="loading" class="d-flex justify-content-center">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                                        <img [hidden]="!loading" (load)="onLoad()" class="profile-picture d-block mx-auto rounded" src="{{userinfo.photo}}" />
+                                        <div class="d-flex mt-2 pt-1 social-section justify-content-center align-items-center">
+                                            <a class="text-warning" href=""><i class="fa fa fa-instagram"></i></a>
+                                            <a class="text-warning" href=""><i class="fa fa fa-facebook"></i></a>
+                                            <a class="text-warning" href=""><i class="fa fa fa-twitter"></i></a>
+                                            <a class="text-warning" href=""><i class="fa fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-7 pl-md-0 pl-lg-0">
+                                    <div class="text-center mb-4 mb-md-1 text-md-left px-4 px-md-0">
+                                        <h2 class="text-warning h5 font-weight-bold mt-0 mb-0">{{userinfo.full_name}}
+                                </h2>
+                                        <p class="text-muted text-uppercase font-weight-light">
+                                            {{userinfo.group_name}}
+                               
+                                        </p>
+                                        <p class="mt-1 small text-secondary">
+                                            {{userinfo.stream_name}}
+                               
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center jumbotron jumbotron-fluid rounded pt-4 pb-2 mb-2 mt-1">
+                                <div class="col flex-grow-0">
+                                    <p class="d-flex justify-content-center">{{userinfo.gaming_points[0].points + userinfo.gaming_points[1].points}}<img class="ml-2" src="https://mystat.itstep.org/assets/images/star.png?v=204f659eb133b4f414e656a3ac055f66" alt="Alternate Text" /></p>
+                                </div>
+                                <div class="col flex-grow-0">
+                                    <p class="d-flex justify-content-center">{{userinfo.gaming_points[0].points}}<img class="ml-2" src="https://mystat.itstep.org/assets/images/christal.png?v=168f87e3e1d37c240e74d77718154602" alt="Alternate Text" /></p>
+                                </div>
+                                <div class="col flex-grow-0">
+                                    <p class="d-flex justify-content-center">{{userinfo.gaming_points[1].points}}<img class="ml-2" src="https://mystat.itstep.org/assets/images/coin.png?v=f68d8665e86de1fb01d5b21850295e47" alt="Alternate Text" /></p>
+                                </div>
+                                <div class="col flex-grow-0">
+                                    <p class="d-flex justify-content-center">{{userinfo.achieves_count}}<img class="ml-2" src="https://mystat.itstep.org/assets/images/badge.png?v=408c768385ccc691a521bbd4b7ddebde" alt="Alternate Text" /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron mt-4">
+  <div *ngIf="loading" class="d-flex justify-content-center">
+      <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+   </div>
+    <div class="splide">
+        <div class="splide__track">
+            <div class="splide__list">
+                <div *ngFor="let leaderstreams of leaderstream">
+                    <div class="splide__slide mx-4 h-100">
+                        <div class="profile-card py-3 card h-100">
+                            <div class="card-body px-4 px-md-3 py-3">
+                                <div class="row">
+                                    <div class="col-12 col-lg-5 pr-lg-3 justify-content-center">
+                                        <div class="px-4 mb-4">
+                                            <img class="profile-picture d-block mx-auto rounded" src="{{leaderstreams.photo_path}}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-7 pl-md-0 pl-lg-0">
+                                        <div class="text-center mb-4 mb-md-1 text-md-left px-4 px-md-0">
+                                            <h2 class="text-warning h5 font-weight-bold mt-0 mb-0">{{leaderstreams.full_name}}
+                                                </h2>
+                                            <p class="text-muted text-uppercase font-weight-light">
+                                                <i class="fa fa-star mr-2 text-primary" aria-hidden="true"></i>{{leaderstreams.position}}
+                               
+                                            </p>
+                                            <p class="mt-1 small text-secondary">
+                                                <i class="fa fa-id-card-o mr-2 text-primary" aria-hidden="true"></i>{{leaderstreams.id}}
+                               
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="splide__progress">
+            <div class="splide__progress__bar">
+            </div>
+        </div>
+    </div>
+
+
+
+
